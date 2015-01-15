@@ -1,0 +1,40 @@
+使用 PyQt4 和 qrcode 库完成工程
+
+QLabel:显示图片 card_0.jpg 到self.ui.image 
+		reader = QtGui.QImageReader( QtCore.QString("card_0.jpg") )
+		qimg = reader.read()
+		pixmap = QtGui.QPixmap.fromImage(qimg)
+		self.ui.image.setPixmap(pixmap)
+	从文件中读取图片，并绘制在QLabel中
+	
+
+生成二维码并输出为文件：
+		qr = qrcode.QRCode(
+			version=1,
+			error_correction=qrcode.constants.ERROR_CORRECT_L,
+			box_size=10,
+			border=4,
+		)
+		qr.add_data('http://www.baidu.com/')
+		qr.make(fit=True)
+		img = qr.make_image()
+		img_file = open("card1.jpg","wb")
+		img.save(img_file,'jpeg')
+		img_file.close()
+
+connect用法：
+		QtCore.QObject.connect(self.ui.pushButton_make,QtCore.SIGNAL("clicked()"),self.onGenerateQRCode)
+
+读取lineedit数据
+		qstr_name = self.ui.lineEdit_name.text()
+	qstr_name 为 QtCore.QString 类型，与str 性质差不多
+
+
+# debug: set param
+        self.ui.lineEdit_name.setText( _fromUtf8("王辉") )
+        self.ui.lineEdit_mobilephone.setText( _fromUtf8("18200000000") )
+        self.ui.lineEdit_email.setText( _fromUtf8("wanda1416@163.com") )
+        self.ui.lineEdit_address.setText( _fromUtf8("武汉理工大学") )
+        
+
+

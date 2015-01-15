@@ -1,0 +1,2 @@
+python card.pyw
+pause

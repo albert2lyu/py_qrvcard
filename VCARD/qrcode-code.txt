@@ -1,0 +1,18 @@
+   #----------------------------------------------------------------------
+    def onUseQrcode(self, event):
+        """
+
+https://github.com/lincolnloop/python-qrcode
+
+        """
+        qr = qrcode.QRCode(version=1, box_size=10, border=4)
+        qr.add_data(self.qrDataTxt.GetValue())
+        qr.make(fit=True)
+        x = qr.make_image()
+ 
+        qr_file = os.path.join(self.defaultLocation, self.qrPhotoTxt.GetValue() + ".jpg")
+        img_file = open(qr_file, 'wb')
+        x.save(img_file, 'JPEG')
+        img_file.close()
+        self.showQRCode(qr_file)
+ 
