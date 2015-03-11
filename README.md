@@ -34,8 +34,6 @@ update_ui.bat 用于重新将 card.ui 编译为 card.py 的批处理命令
 logo.png 默认的二维码名片中间logo图标
 
 
-
-
 ##一些用法
 
 QLabel:显示图片 card_0.jpg 到self.ui.image 
@@ -66,7 +64,7 @@ connect用法：
 
 		QtCore.QObject.connect(self.ui.pushButton_make,QtCore.SIGNAL("clicked()"),self.onGenerateQRCode)
 
-读取lineedit数据
+读取lineedit控件数据
 
 		qstr_name = self.ui.lineEdit_name.text()
 	qstr_name 为 QtCore.QString 类型，与str 性质差不多
